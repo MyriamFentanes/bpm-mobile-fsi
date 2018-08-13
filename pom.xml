@@ -19,7 +19,7 @@
 		<!-- BPM Product Versions -->
 		<jbpm.version>6.5.0.Final-redhat-16</jbpm.version>
 		<dashbuilder.version>0.5.0.Final-redhat-12</dashbuilder.version>
-		<version.org.jboss.bom.brms>6.4.8.GA-redhat-2</version.org.jboss.bom.brms>
+		<version.org.jboss.bom.brms>6.5.0.Final-redhat-16</version.org.jboss.bom.brms>
 		
 		<!-- Java Compiler -->
 		<maven.compiler.source>1.8</maven.compiler.source>
