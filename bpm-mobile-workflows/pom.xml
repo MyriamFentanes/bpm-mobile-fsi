@@ -1,0 +1,100 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>org.jbpm.demo</groupId>
+		<artifactId>bpm-mobile-parent</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+
+	<artifactId>bpm-mobile-workflows</artifactId>
+	<packaging>kjar</packaging>
+	<name>bpm-mobile-workflows</name>
+
+	<properties>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+	</properties>
+
+	<!-- Pushes Deployment to BC to prevent KIE-Server Restart -->
+	<distributionManagement>
+		<repository>
+			<id>guvnor-m2-repo</id>
+			<name>maven repo</name>
+			<url>http://localhost:8080/business-central/maven2/</url>
+			<layout>default</layout>
+		</repository>
+	</distributionManagement>
+ 
+	<dependencies>
+
+		<!-- Internal Project Dependencies -->
+		<dependency>
+			<groupId>org.jbpm.demo</groupId>
+			<artifactId>bpm-mobile-models</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.jbpm.demo</groupId>
+			<artifactId>bpm-mobile-utils</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>commons-logging</groupId>
+					<artifactId>commons-logging</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<!-- jBPM // DROOLS API -->
+		<dependency>
+			<groupId>org.jbpm</groupId>
+			<artifactId>jbpm-kie-services</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.drools</groupId>
+			<artifactId>drools-persistence-jpa</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.kie</groupId>
+			<artifactId>kie-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.kie.remote</groupId>
+			<artifactId>kie-remote-client</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- DashBuilder // Reporting -->
+		<dependency>
+			<groupId>org.dashbuilder</groupId>
+			<artifactId>dashbuilder-dataset-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.dashbuilder</groupId>
+			<artifactId>dashbuilder-dataset-core</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.dashbuilder</groupId>
+			<artifactId>dashbuilder-dataset-sql</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.kie</groupId>
+				<artifactId>kie-maven-plugin</artifactId>
+				<version>6.5.0.Final-redhat-19</version>
+				<extensions>true</extensions>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

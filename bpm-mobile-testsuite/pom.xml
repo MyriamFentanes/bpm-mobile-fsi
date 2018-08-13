@@ -1,0 +1,161 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  
+  <parent>
+    <groupId>org.jbpm.demo</groupId>
+    <artifactId>bpm-mobile-parent</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  
+  <artifactId>bpm-mobile-testsuite</artifactId>
+  <name>bpm-mobile-testsuite</name>
+  <description>TestSuite for the jBPM Mobile Workflows</description>
+  
+  	<dependencies>
+  	
+		<dependency>
+			<groupId>org.jbpm.demo</groupId>
+			<artifactId>bpm-mobile-workflows</artifactId>
+			<scope>test</scope>	
+		</dependency>
+		<dependency>
+			<groupId>org.jbpm.demo</groupId>
+			<artifactId>bpm-mobile-utils</artifactId>
+			<scope>test</scope>	
+		</dependency>
+		<dependency>
+			<groupId>org.jbpm.demo</groupId>
+			<artifactId>bpm-mobile-models</artifactId>
+			<scope>test</scope>	
+		</dependency>
+		
+		<dependency>
+			<groupId>org.kie</groupId>
+			<artifactId>kie-api</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+	        <groupId>org.kie.remote</groupId>
+	        <artifactId>kie-remote-client</artifactId>
+	        <scope>test</scope>
+	    </dependency>
+	    <dependency>
+			<groupId>org.kie.server</groupId>
+			<artifactId>kie-server-client</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.jbpm</groupId>
+			<artifactId>jbpm-kie-services</artifactId>
+			<scope>test</scope>
+		</dependency>
+		
+		<!-- TEST -->
+		<dependency>
+			<groupId>org.jbpm</groupId>
+			<artifactId>jbpm-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		
+		<!-- LOGGING -->
+		<dependency>
+       		<groupId>org.slf4j</groupId>
+       		<artifactId>slf4j-api</artifactId>
+       		<scope>test</scope>
+   		</dependency>
+   		<dependency>
+      		<groupId>org.slf4j</groupId>
+       		<artifactId>slf4j-log4j12</artifactId>
+       		<scope>test</scope>
+   		</dependency>
+		
+		<!-- BDD -->
+		<dependency>
+			<groupId>info.cukes</groupId>
+			<artifactId>cucumber-junit</artifactId>
+			<version>${cucumber.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>info.cukes</groupId>
+			<artifactId>cucumber-java</artifactId>
+			<version>${cucumber.version}</version>
+		</dependency>
+		
+	</dependencies>
+	
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>${maven-surefire-plugin.version}</version>
+				<configuration>
+					<skipTests>${skip.tests}</skipTests>
+					<systemPropertyVariables>
+						<kie.server.url>${integartion.test.kie.server.url}</kie.server.url>
+						<kie.server.user>${integartion.test.kie.server.user}</kie.server.user>
+						<kie.server.password>${integartion.test.kie.server.password}</kie.server.password>
+						<kie.server.containerId>${integartion.test.kie.server.containerId}</kie.server.containerId>
+					</systemPropertyVariables>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<profiles>
+		<!-- The Configuration of the development profile -->
+		<profile>
+			<id>development</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<build.profile.id>development</build.profile.id>
+			</properties>
+			<build>
+            <plugins>
+              <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven-surefire-plugin.version}</version>
+                <configuration>
+                    <excludes>
+                        <exclude>**/*ITest.java</exclude>
+                    </excludes>
+                </configuration>
+              </plugin>
+            </plugins>
+          </build>
+		</profile>
+		
+		<!-- The Configuration of the integration-test profile -->
+		<profile>
+			<id>integration-tests</id>
+			<properties>
+				<build.profile.id>integration-tests</build.profile.id>
+				<integartion.test.kie.server.url>http://localhost:8080/kie-server/services/rest/server</integartion.test.kie.server.url>
+				<integartion.test.kie.server.user>bpmsAdmin</integartion.test.kie.server.user>
+				<integartion.test.kie.server.password>Pa$$$w0rd</integartion.test.kie.server.password>
+				<integartion.test.kie.server.containerId>org.jbpm.demo:bpm-mobile-testsuite:integrationtest</integartion.test.kie.server.containerId>
+				<integartion.test.kie.kjar.artifact.version>${project.version}</integartion.test.kie.kjar.artifact.version>
+				<integartion.test.kie.kjar.artifact.groupid>${project.groupId}</integartion.test.kie.kjar.artifact.groupid>
+			</properties>
+			<build>
+		    	<plugins>
+			      <plugin>
+			        <groupId>org.apache.maven.plugins</groupId>
+			        <artifactId>maven-surefire-plugin</artifactId>
+			        <version>${maven-surefire-plugin.version}</version>
+			        <configuration>
+				          <excludes>
+				          	<exclude>org.jbpm.demo.test.workflows.**/*Test.java</exclude>
+				          </excludes>
+			        </configuration>
+			    	</plugin>
+				</plugins>
+		  	</build>
+		</profile>
+	</profiles>
+
+</project>

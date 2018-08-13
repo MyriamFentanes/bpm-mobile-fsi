@@ -1,0 +1,41 @@
+
+<form id="868630080">
+<property name="name" value="Application-Management.NewApplication1-taskform.form"/>
+<property name="displayMode" value="default"/>
+<property name="status" value="0"/>
+<field position="0" name="additionalDocsRequired" type="CheckBox" id="699256696">
+<property name="fieldRequired" value="false"/>
+<property name="label" value="quot;caquot;,quot;quot;quot;dequot;,quot;quot;quot;enquot;,quot;Additional Docs Requiredquot;quot;esquot;,quot;quot;quot;frquot;,quot;quot;quot;jaquot;,quot;quot;quot;ptquot;,quot;quot;quot;zhquot;,quot;quot;"/>
+<property name="errorMessage" value="quot;caquot;,quot;quot;quot;dequot;,quot;quot;quot;enquot;,quot;quot;quot;esquot;,quot;quot;quot;frquot;,quot;quot;quot;jaquot;,quot;quot;quot;ptquot;,quot;quot;quot;zhquot;,quot;quot;"/>
+<property name="title" value="quot;caquot;,quot;quot;quot;dequot;,quot;quot;quot;enquot;,quot;quot;quot;esquot;,quot;quot;quot;frquot;,quot;quot;quot;jaquot;,quot;quot;quot;ptquot;,quot;quot;quot;zhquot;,quot;quot;"/>
+<property name="readonly" value="false"/>
+<property name="outputBinding" value="additionalDocsRequired"/>
+<property name="fieldClass" value="java.lang.Boolean"/>
+</field>
+<field position="1" name="statusList_id" type="InputTextLong" id="954985104">
+<property name="fieldRequired" value="false"/>
+<property name="label" value="quot;caquot;,quot;quot;quot;dequot;,quot;quot;quot;enquot;,quot;Status Listquot;quot;esquot;,quot;quot;quot;frquot;,quot;quot;quot;jaquot;,quot;quot;quot;ptquot;,quot;quot;quot;zhquot;,quot;quot;"/>
+<property name="errorMessage" value="quot;caquot;,quot;quot;quot;dequot;,quot;quot;quot;enquot;,quot;quot;quot;esquot;,quot;quot;quot;frquot;,quot;quot;quot;jaquot;,quot;quot;quot;ptquot;,quot;quot;quot;zhquot;,quot;quot;"/>
+<property name="title" value="quot;caquot;,quot;quot;quot;dequot;,quot;quot;quot;enquot;,quot;quot;quot;esquot;,quot;quot;quot;frquot;,quot;quot;quot;jaquot;,quot;quot;quot;ptquot;,quot;quot;quot;zhquot;,quot;quot;"/>
+<property name="readonly" value="false"/>
+<property name="outputBinding" value="statusList/id"/>
+<property name="fieldClass" value="java.lang.Long"/>
+</field>
+<field position="2" name="validApp" type="CheckBox" id="1072111912">
+<property name="fieldRequired" value="false"/>
+<property name="label" value="quot;caquot;,quot;quot;quot;dequot;,quot;quot;quot;enquot;,quot;Valid Appquot;quot;esquot;,quot;quot;quot;frquot;,quot;quot;quot;jaquot;,quot;quot;quot;ptquot;,quot;quot;quot;zhquot;,quot;quot;"/>
+<property name="errorMessage" value="quot;caquot;,quot;quot;quot;dequot;,quot;quot;quot;enquot;,quot;quot;quot;esquot;,quot;quot;quot;frquot;,quot;quot;quot;jaquot;,quot;quot;quot;ptquot;,quot;quot;quot;zhquot;,quot;quot;"/>
+<property name="title" value="quot;caquot;,quot;quot;quot;dequot;,quot;quot;quot;enquot;,quot;quot;quot;esquot;,quot;quot;quot;frquot;,quot;quot;quot;jaquot;,quot;quot;quot;ptquot;,quot;quot;quot;zhquot;,quot;quot;"/>
+<property name="readonly" value="false"/>
+<property name="outputBinding" value="validApp"/>
+<property name="fieldClass" value="java.lang.Boolean"/>
+</field>
+<dataHolder inputId="" name="#FBB767" type="basicType" outId="additionalDocsRequired" value="java.lang.Boolean" id="additionalDocsRequired"/>
+<dataHolder inputId="" name="#E9E371" type="dataModelerEntry" outId="application" value="com.rh.demo.bpm.applicationmanagement.model.Application" id="application"/>
+<dataHolder inputId="" name="#FF8881" type="basicType" outId="applicationType" value="java.lang.String" id="applicationType"/>
+<dataHolder inputId="" name="#A7E690" type="className" outId="documentList" value="java.util.ArrayList" id="documentList"/>
+<dataHolder inputId="" name="#BBBBBB" type="className" outId="interviewDates" value="java.util.ArrayList" id="interviewDates"/>
+<dataHolder inputId="" name="#9BCAFA" type="className" outId="newProductOffers" value="java.util.ArrayList" id="newProductOffers"/>
+<dataHolder inputId="" name="#B29FE4" type="dataModelerEntry" outId="statusList" value="com.rh.demo.bpm.applicationmanagement.model.StatusList" id="statusList"/>
+<dataHolder inputId="" name="#FF54A7" type="basicType" outId="validApp" value="java.lang.Boolean" id="validApp"/>
+</form>

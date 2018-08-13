@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<definitions id="Definition"
+             targetNamespace="http://www.jboss.org/drools"
+             typeLanguage="http://www.java.com/javaTypes"
+             expressionLanguage="http://www.mvel.org/2.0"
+             xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd"
+             xmlns:g="http://www.jboss.org/drools/flow/gpd"
+             xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+             xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+             xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+             xmlns:tns="http://www.jboss.org/drools">
+
+  <process processType="Private" isExecutable="true" id="com.sample.bpmn.hello" name="sample" >
+
+    <!-- nodes -->
+    <startEvent id="_jbpm-unique-0" name="Start"  isInterrupting="false">
+    </startEvent>
+    <scriptTask id="_jbpm-unique-1" name="Script 1" >
+      <script>System.out.println("Hello World");</script>
+    </scriptTask>
+    <userTask id="_jbpm-unique-2" name="User Task 1" >
+      <extensionElements>
+        <tns:onEntry-script>
+          <tns:script>System.out.println("Entered Task");</tns:script>
+        </tns:onEntry-script>
+      </extensionElements>
+      <ioSpecification>
+        <dataInput id="_jbpm-unique-2_NodeNameInput" name="NodeName" />
+        <dataInput id="_jbpm-unique-2_GroupIdInput" name="GroupId" />
+        <inputSet>
+          <dataInputRefs>_jbpm-unique-2_NodeNameInput</dataInputRefs>
+          <dataInputRefs>_jbpm-unique-2_GroupIdInput</dataInputRefs>
+        </inputSet>
+        <outputSet>
+        </outputSet>
+      </ioSpecification>
+      <dataInputAssociation>
+        <targetRef>_jbpm-unique-2_NodeNameInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">User Task 1</from>
+          <to xsi:type="tFormalExpression">_jbpm-unique-2_NodeNameInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataInputAssociation>
+        <targetRef>_jbpm-unique-2_GroupIdInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression"></from>
+          <to xsi:type="tFormalExpression">_jbpm-unique-2_GroupIdInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <potentialOwner>
+        <resourceAssignmentExpression>
+          <formalExpression>john</formalExpression>
+        </resourceAssignmentExpression>
+      </potentialOwner>
+    </userTask>
+    <endEvent id="_jbpm-unique-3" name="End" >
+        <terminateEventDefinition />
+    </endEvent>
+    <userTask id="_jbpm-unique-4" name="User Task 2" >
+      <extensionElements>
+        <tns:onEntry-script>
+          <tns:script>System.out.println("Entered Task");</tns:script>
+        </tns:onEntry-script>
+      </extensionElements>
+      <ioSpecification>
+        <dataInput id="_jbpm-unique-4_NodeNameInput" name="NodeName" />
+        <inputSet>
+          <dataInputRefs>_jbpm-unique-4_NodeNameInput</dataInputRefs>
+        </inputSet>
+        <outputSet>
+        </outputSet>
+      </ioSpecification>
+      <dataInputAssociation>
+        <targetRef>_jbpm-unique-4_NodeNameInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">User Task 2</from>
+          <to xsi:type="tFormalExpression">_jbpm-unique-4_NodeNameInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <potentialOwner>
+        <resourceAssignmentExpression>
+          <formalExpression>mary</formalExpression>
+        </resourceAssignmentExpression>
+      </potentialOwner>
+    </userTask>
+
+    <!-- connections -->
+    <sequenceFlow id="_jbpm-unique-0-_jbpm-unique-1" sourceRef="_jbpm-unique-0" targetRef="_jbpm-unique-1" />
+    <sequenceFlow id="_jbpm-unique-1-_jbpm-unique-2" sourceRef="_jbpm-unique-1" targetRef="_jbpm-unique-2" />
+    <sequenceFlow id="_jbpm-unique-4-_jbpm-unique-3" sourceRef="_jbpm-unique-4" targetRef="_jbpm-unique-3" />
+    <sequenceFlow id="_jbpm-unique-2-_jbpm-unique-4" sourceRef="_jbpm-unique-2" targetRef="_jbpm-unique-4" />
+
+  </process>
+
+  <bpmndi:BPMNDiagram>
+    <bpmndi:BPMNPlane bpmnElement="com.sample.bpmn.hello" >
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-0" >
+        <dc:Bounds x="82" y="205" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-1" >
+        <dc:Bounds x="186" y="203" width="80" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-2" >
+        <dc:Bounds x="324" y="204" width="100" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-3" >
+        <dc:Bounds x="633" y="200" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_jbpm-unique-4" >
+        <dc:Bounds x="468" y="200" width="100" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-0-_jbpm-unique-1" >
+        <di:waypoint x="106" y="229" />
+        <di:waypoint x="226" y="227" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-1-_jbpm-unique-2" >
+        <di:waypoint x="226" y="227" />
+        <di:waypoint x="374" y="228" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-4-_jbpm-unique-3" >
+        <di:waypoint x="518" y="224" />
+        <di:waypoint x="657" y="224" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_jbpm-unique-2-_jbpm-unique-4" >
+        <di:waypoint x="374" y="228" />
+        <di:waypoint x="518" y="224" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+
+</definitions>

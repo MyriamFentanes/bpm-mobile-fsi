@@ -1,0 +1,111 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.jbpm.demo</groupId>
+	<artifactId>bpm-mobile-parent</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<name>BPM FIS Mobile Demo Project</name>
+	
+	<modules>
+		<module>bpm-mobile-workflows</module>
+		<module>bpm-mobile-utils</module>
+		<module>bpm-mobile-testsuite</module>
+		<module>bpm-mobile-models</module>
+	</modules>
+
+	<properties>
+		<!-- BPM Product Versions -->
+		<jbpm.version>6.5.0.Final-redhat-16</jbpm.version>
+		<dashbuilder.version>0.5.0.Final-redhat-12</dashbuilder.version>
+		<version.org.jboss.bom.brms>6.4.8.GA-redhat-2</version.org.jboss.bom.brms>
+		
+		<!-- Java Compiler -->
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		
+		<!-- Additional Dependency Versions -->
+		<slf4j.version>1.7.5</slf4j.version>
+		<cucumber.version>1.2.4</cucumber.version>
+		<apache.commons.version>3.0</apache.commons.version>
+		<apache.http-client.version>4.3.4</apache.http-client.version>
+		<javax.mail.version>1.5.1</javax.mail.version>
+		<gson.version>2.8.0</gson.version>
+	
+		<!-- maven plugins -->
+		<maven-surefire-plugin.version>2.21.0</maven-surefire-plugin.version>
+		<maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
+		<maven-dependency-plugin.version>2.1</maven-dependency-plugin.version>
+		<maven-ear-plugin.configuration.version>6</maven-ear-plugin.configuration.version>
+		<maven-ear-plugin.version>2.8</maven-ear-plugin.version>
+		<maven-jar-plugin.version>2.6</maven-jar-plugin.version>
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+		
+			<!-- BRMS / BPMS Dep Managment -->
+			<dependency>
+				<groupId>org.jboss.bom.brms</groupId>
+				<artifactId>jboss-brms-bpmsuite-platform-bom</artifactId>
+				<type>pom</type>
+				<version>${version.org.jboss.bom.brms}</version>
+				<scope>import</scope>
+			</dependency>
+			
+			<!-- Project Deps -->
+			<dependency>
+				<groupId>org.jbpm.demo</groupId>
+				<artifactId>bpm-mobile-workflows</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.jbpm.demo</groupId>
+				<artifactId>bpm-mobile-utils</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.jbpm.demo</groupId>
+				<artifactId>bpm-mobile-models</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.jbpm.demo</groupId>
+				<artifactId>bpm-mobile-testsuite</artifactId>
+				<version>${project.version}</version>
+			</dependency>	
+			
+		</dependencies>		
+	</dependencyManagement>
+	
+	<repositories>
+		<repository>
+			<id>jboss-enterprise-repository-group</id>
+			<name>JBoss Enterprise Maven Repository</name>
+			<url>https://maven.repository.redhat.com/ga/</url>
+			<layout>default</layout>
+			<releases>
+				<enabled>true</enabled>
+				<updatePolicy>never</updatePolicy>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+				<updatePolicy>daily</updatePolicy>
+			</snapshots>
+		</repository>
+	</repositories>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-release-plugin</artifactId>
+					<version>2.5.3</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+
+</project>
